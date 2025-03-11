@@ -1,10 +1,11 @@
 이 코드는 OpenGl을 사용하여 한글 문자를 그리는 프로그램이다. GLUT 라이브러리를 사용하여 윈도우를 생성하고 랜더링한다.
 
-주요 함수들
+주요 함수들은 다음과 같다.
 
 1. draw_circle
 • 이 함수는 주어진 반지름(rad)과 중심 좌표(dx, dy)를 기반으로 원을 그린다.
 • 360도 각도를 사용하여 원의 모든 꼭지점을 계산하고 glVertex2f를 통해 그린다.
+
 
 void draw_circle(double rad, double dx, double dy){
     glBegin(GL_POLYGON);
@@ -17,6 +18,7 @@ void draw_circle(double rad, double dx, double dy){
     glEnd();
 }
 
+
 draw_ㅇ
 • "ㅇ" 글자를 그리는 함수이다. 먼저 큰 원을 그리고, 그 안에 작은 원을 그려 내부를 비워준다.
 • 외부 원은 검정색, 내부 원은 흰색으로 설정하여 "ㅇ" 모양을 완성한다.
@@ -27,6 +29,7 @@ void draw_ㅇ(double rad, double dx, double dy) {
     draw_circle(rad - 0.07, dx, dy); // 내부 원 그리기
     glColor3f(0, 0, 0); // 외부 원 색상 (검정색)
 }
+
 
 draw_ㅈ
 • "ㅈ" 글자를 그리는 함수입니다. 여러 꼭지점을 사용하여 복잡한 다각형 형태를 만들어낸다.
@@ -49,6 +52,7 @@ void draw_ㅈ(double dx, double dy) {
     glEnd();
 }
 
+
 draw_ㅏ
 • "ㅏ" 글자를 그리는 함수로, "ㅗ" 모양을 90도 회전시켜 그린다.
 • glPushMatrix와 glPopMatrix를 사용하여 변환 행렬을 저장하고 복원한다.
@@ -61,14 +65,17 @@ void draw_ㅏ(double dx, double dy) {
     glPopMatrix(); // 변환 행렬 복원
 }
 
+
 draw_ㅎ
 • "ㅎ" 글자를 그리는 함수이다. "ㅗ"를 그린 후 그 아래에 "ㅇ"을 추가하여 만든다.
 • "ㅇ"은 "ㅎ"의 아래쪽에 적절히 배치된다.
+
 
 void draw_ㅎ(double rad, double dx, double dy) {
     draw_ㅗ(dx, dy); // "ㅗ" 그리기
     draw_ㅇ(rad, dx + 0.0025, dy - 0.25); // "ㅇ" 그리기
 }
+
 
 draw_ㄱ
 • "ㄱ" 글자를 그리는 함수이다. 세로선과 가로선을 사용하여 "ㄱ" 모양을 만든다.
